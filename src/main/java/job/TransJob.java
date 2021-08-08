@@ -116,7 +116,7 @@ public class TransJob implements Job {
 
 
         //發送 Line notify
-        sendLineNotify("===> OK");
+        //sendLineNotify("===> OK");
 
 
 

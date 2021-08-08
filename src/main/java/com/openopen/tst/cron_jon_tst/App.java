@@ -45,7 +45,7 @@ public class App {
         // [2] define the Trigger
         Trigger triggerMy = newTrigger()
                 .withIdentity("triggerMy", "group1")
-                .withSchedule(CronScheduleBuilder.cronSchedule("0/5 * * * * ?"))
+                .withSchedule(CronScheduleBuilder.cronSchedule("0/2 * * * * ?"))
                 .forJob(myJob)
                 .build();
 
