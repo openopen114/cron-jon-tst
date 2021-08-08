@@ -2,6 +2,7 @@ package com.openopen.tst.cron_jon_tst;
 
 
 import job.MyJob;
+import job.TransJob;
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 
@@ -34,6 +35,13 @@ public class App {
 
 
 
+        JobDetail transJob = newJob(TransJob.class)
+                .withIdentity("TransJob", "group1")
+                .build();
+
+
+
+
         // [2] define the Trigger
         Trigger triggerMy = newTrigger()
                 .withIdentity("triggerMy", "group1")
@@ -42,9 +50,17 @@ public class App {
                 .build();
 
 
+        Trigger triggerTransJob = newTrigger()
+                .withIdentity("triggerTransJob", "group1")
+                .withSchedule(CronScheduleBuilder.cronSchedule("0/10 * * * * ?"))
+                .forJob(transJob)
+                .build();
+
+
 
         // [3] define the scheduleJob
         scheduler.scheduleJob(myJob, triggerMy);
+        scheduler.scheduleJob(transJob, triggerTransJob);
 
 
 
