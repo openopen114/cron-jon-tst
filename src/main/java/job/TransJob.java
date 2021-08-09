@@ -32,7 +32,7 @@ public class TransJob implements Job {
 
         /******** 1. 標註處理中 ********/
         updateStatus("NULL_TO_X", "ALL");
-        System.out.println("====> 標註處理中 NULL_TO_X ");
+        System.out.println("====> 1. 標註處理中 NULL_TO_X ");
 
 
 
@@ -80,6 +80,9 @@ public class TransJob implements Job {
             //請求
             resultSet = psmt.executeQuery();
 
+
+            System.out.println(" 2. 取得處理中 X 清單");
+
             //結果集
             /******** 3. for each 轉檔 ********/
             while (resultSet.next()) {
@@ -112,8 +115,7 @@ public class TransJob implements Job {
         }
 
 
-
-
+        System.out.println("=================================>DONE");
 
         //發送 Line notify
         //sendLineNotify("===> OK");

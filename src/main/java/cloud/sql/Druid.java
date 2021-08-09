@@ -82,10 +82,9 @@ public class Druid {
                 String connectionString = "jdbc:postgresql:///postgres";
                 url = connectionString;
             }
- 
- 
-            
-            System.out.println("==> url : [" + APIENV + "] " + url );
+
+
+
             
             //設定其他參數
             username = p.getProperty("jdbc.username");
@@ -96,6 +95,16 @@ public class Druid {
             maxActive = Integer.parseInt(p.getProperty("maxActive"));
             maxWait = Integer.parseInt(p.getProperty("maxWait"));
             minIdle = Integer.parseInt(p.getProperty("minIdle"));
+
+
+            System.out.println("=========================================== ");
+            System.out.println("======> url : [ " + APIENV + " ] " + url );
+            System.out.println("======> url : [ " + APIENV + " ] " + cloudSqlInstance );
+            System.out.println("=========================================== ");
+
+
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }

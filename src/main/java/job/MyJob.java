@@ -22,7 +22,7 @@ public class MyJob  implements Job {
 
 
         Connection conn = null;
-        PreparedStatement preparedStatement = null;
+        PreparedStatement psmt = null;
         ResultSet resultSet = null;
 
 
@@ -44,13 +44,13 @@ public class MyJob  implements Job {
                     "values(now(), ? , ?) " ;
 
             //預處理SQL
-            preparedStatement = null;
-            preparedStatement = conn.prepareStatement(query);
-            preparedStatement.setString(1, String.valueOf(new Date().getTime()));
-            preparedStatement.setString(2,null);
+            psmt = null;
+            psmt = conn.prepareStatement(query);
+            psmt.setString(1, String.valueOf(new Date().getTime()));
+            psmt.setString(2,null);
 
             //請求
-            preparedStatement.executeUpdate();
+            psmt.executeUpdate();
 
             // Commit
             conn.commit();
@@ -70,7 +70,7 @@ public class MyJob  implements Job {
         } finally {
             if (conn != null) {
                 try {
-                    preparedStatement.close();
+                    psmt.close();
                     conn.close();
                 } catch (SQLException e) {
                     e.printStackTrace();
